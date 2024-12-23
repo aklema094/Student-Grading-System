@@ -1,8 +1,38 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class GradingSystem{
-    private static HashMap<Integer, String> studentRecords = new HashMap<>();
+
+    static class Student {
+        int id;
+        String name;
+        HashMap<String,Integer > marks = new HashMap<>();
+
+        Student(int id, String name){
+            this.id = id;
+            this.name = name;
+            this.marks = new HashMap<>();
+        }
+
+        public int getId() {
+           return id;
+        }
+
+       public String getName() {
+          return name;
+       }
+
+       public Map<String, Integer> getMarks() {
+          return marks;
+       }
+       public void setName( String name){
+        this.name = name;
+        return;
+       }
+
+    }
+ static HashMap<Integer, Student> studentRecords = new HashMap<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -22,7 +52,12 @@ public class GradingSystem{
               addStudent(id,name);
                 break;
             case 2:
-                //updateStudent();
+              System.out.print("Enter Id : ");
+              id = scanner.nextInt();
+              scanner.nextLine();
+              System.out.print("Enter new name : ");
+              name = scanner.nextLine();
+              updateStudent(id, name);
                 break;
             case 3:
                 //deleteStudent();
@@ -53,16 +88,26 @@ public class GradingSystem{
     }
 
     // add new student 
+    /**
+     * @param id
+     * @param name
+     */
     public static void addStudent(int id, String name){
-
         if(studentRecords.containsKey(id)){
             System.out.println("Student with this ID already exist");
             return;
+        } 
+        studentRecords.put(id, new Student(id, name));
+        System.out.println("Student added successfully");
+    }
+    // update student
+    private static void updateStudent(int id, String  name){
+        if (studentRecords.containsKey(id)) {
+        Student student = studentRecords.get(id);
+        student.setName(name); 
+        System.out.println("Student updated successfully");
+         return;          
         }
-        
-       studentRecords.put(id, name);
-       System.out.println("Student added successfully");
-
-
+        System.out.println("Student not found");
     }
 }
