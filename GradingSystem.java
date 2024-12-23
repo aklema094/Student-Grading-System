@@ -60,9 +60,13 @@ public class GradingSystem{
               updateStudent(id, name);
                 break;
             case 3:
-                //deleteStudent();
+             System.out.print("Enter Id : ");
+             id = scanner.nextInt();
+             deleteStudent(id);
                 break;
             case 4:
+            System.out.print("Enter Id : ");
+            id = scanner.nextInt();
                 //Searchtudent();
                 break;
             case 5:
@@ -109,5 +113,13 @@ public class GradingSystem{
          return;          
         }
         System.out.println("Student not found");
+    }
+    // delete student
+    public static void deleteStudent(int id) {
+        if (studentRecords.remove(id) != null) {
+            System.out.println("Student deleted successfully.");
+        } else {
+            System.out.println("Student not found.");
+        }
     }
 }
