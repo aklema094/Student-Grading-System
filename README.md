@@ -1,1 +1,1 @@
-The program uses object-oriented programming concepts and includes methods for adding, updating, deleting, searching student records, calculating GPA, and displaying a grade distribution chart.You can run it in any Java IDE or command-line setup to test its functionality.
+The program uses object-oriented programming concepts and includes methods for adding, updating, deleting, searching student records, calculating GPA, and displaying a grade distribution chart.we can run it in any Java IDE or command-line setup to test its functionality.
