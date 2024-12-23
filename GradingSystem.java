@@ -67,7 +67,7 @@ public class GradingSystem{
             case 4:
             System.out.print("Enter Id : ");
             id = scanner.nextInt();
-                //Searchtudent();
+            Searchtudent(id);
                 break;
             case 5:
                 //updateMark();
@@ -121,5 +121,15 @@ public class GradingSystem{
         } else {
             System.out.println("Student not found.");
         }
+    }
+
+    // search student
+    public static void Searchtudent(int id){
+        if(studentRecords.containsKey(id)){
+            Student student = studentRecords.get(id);
+            System.out.println(student);
+            return;
+        }
+        System.out.println("Student not found");
     }
 }
