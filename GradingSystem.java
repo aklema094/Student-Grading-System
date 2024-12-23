@@ -7,7 +7,7 @@ public class GradingSystem{
     static class Student {
         int id;
         String name;
-        HashMap<String,Integer > marks = new HashMap<>();
+        HashMap<String, Integer > marks = new HashMap<>();
 
         Student(int id, String name){
             this.id = id;
@@ -27,8 +27,11 @@ public class GradingSystem{
           return marks;
        }
        public void setName( String name){
-        this.name = name;
-        return;
+          this.name = name;
+          return;
+       }
+       public void addOrUpdate(String subject, int mark){
+          marks.put(subject,mark);
        }
 
     }
@@ -60,23 +63,31 @@ public class GradingSystem{
               updateStudent(id, name);
                 break;
             case 3:
-             System.out.print("Enter Id : ");
-             id = scanner.nextInt();
-             deleteStudent(id);
+              System.out.print("Enter Id : ");
+              id = scanner.nextInt();
+              deleteStudent(id);
                 break;
             case 4:
-            System.out.print("Enter Id : ");
-            id = scanner.nextInt();
-            Searchtudent(id);
+              System.out.print("Enter Id : ");
+              id = scanner.nextInt();
+              Searchtudent(id);
                 break;
             case 5:
-                //updateMark();
+              System.out.print("Enter ID: ");
+              id = scanner.nextInt();
+              scanner.nextLine();
+              System.out.print("Enter Subject: ");
+              String subject = scanner.nextLine();
+              System.out.print("Enter Mark: ");
+              int mark = scanner.nextInt();
+              updateMark(id,subject,mark);
                 break;
             case 6:
                 //displayGrade();
                 break;
             case 7:
                 System.out.println("Thank you");
+                scanner.close();
                 return;
         
             default:
@@ -88,7 +99,7 @@ public class GradingSystem{
     }
     public static void mainMenu(){
         System.out.println("1. Add Student \n2. Update Student \n3. Delete Student \n4. Search Student");
-        System.out.println("5. Update Mark \n6. Display Grade Distribution \n7. Exit");
+        System.out.println("5. Add or Update Mark \n6. Display Grade Distribution \n7. Exit");
     }
 
     // add new student 
@@ -131,5 +142,16 @@ public class GradingSystem{
             return;
         }
         System.out.println("Student not found");
+    }
+
+    // add or update mark 
+    public static void updateMark(int id, String sub, int mar){
+        if(studentRecords.containsKey(id)){
+            Student st = studentRecords.get(id);
+            st.addOrUpdate(sub, mar);
+            System.out.println("Mark added/updated successfully");
+            return;
+        }
+            System.out.println("Student not found");
     }
 }
